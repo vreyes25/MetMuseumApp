@@ -34,6 +34,8 @@ class HomeFragment : Fragment() {
                     intent.putExtra("departmentId", data.departments[position].departmentId)
                     intent.putExtra("departmentName", data.departments[position].displayName)
                     startActivity(intent)
+
+                    Toast.makeText(context, "Hello", Toast.LENGTH_SHORT).show()
                 }
             })
         })
