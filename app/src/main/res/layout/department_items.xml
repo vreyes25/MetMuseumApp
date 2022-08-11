@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="270dp"
+    android:layout_height="290dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="20dp"
+    android:layout_margin="5dp"
+    android:background="@drawable/department_background">
+
+    <TextView
+        android:id="@+id/departmentTitle"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="22dp"
+        android:fontFamily="@font/poppins_medium"
+        android:textSize="14sp"
+        android:textColor="#D9D9D9"
+        tools:text="American Decorative Arts"
+        android:translationZ="1dp"/>
+
+    <TextView
+        android:id="@+id/departmentId"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginTop="120dp"
+        android:fontFamily="@font/poppins_medium"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        tools:text="1" />
+
+    <ImageView
+        android:id="@+id/departmentImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:scaleType="centerCrop"
+        android:src="@drawable/department_background"/>
+
+</androidx.cardview.widget.CardView>

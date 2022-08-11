@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Splash Screen Color -->
+    <color name="splash">#580404</color>
+    <color name="notificationBar">#0C0505</color>
+    <color name="subtitleMain">#858585</color>
+
+    <!-- Light Mode -->
+    <!-- Bottom Navigation Colors -->
+    <color name="backgroundLight">#FFFFFF</color>
+    <color name="navigationMenuLight">#FFFFFF</color>
+    <color name="pressedItem">#7E0000</color>
+    <color name="unpressedItem">#858585</color>
+    <color name="text">#858585</color>
+    <color name="titleLight">#3A3A3A</color>
+    <color name="textLight">#858585</color>
+
+    <!-- Dark Mode -->
+    <color name="backgroundDark">#121212</color>
+    <color name="navigationMenuDark">#050505</color>
+    <color name="textDark">#858585</color>
+    <color name="titleDark">#D1D1D1</color>
+</resources>

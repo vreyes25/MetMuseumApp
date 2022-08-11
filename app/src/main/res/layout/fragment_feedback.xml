@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FeedbackFragment"
+    style="@style/Background">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/settingsTitle"
+                style="@style/Title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="10dp"
+                android:fontFamily="@font/poppins_extrabold"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="@string/feedback"
+                android:textSize="22sp" />
+
+            <View
+                android:id="@+id/lineDecoration"
+                style="@style/Line"
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp" />
+
+            <TextView
+                android:id="@+id/firstQuestion"
+                style="@style/Text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins_medium"
+                android:paddingStart="10dp"
+                android:text="@string/firstQuestion"
+                android:textSize="14sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/firstAnswerContainer"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:fontFamily="@font/poppins_medium"
+                android:textColorHighlight="@color/unpressedItem"
+                android:textColorLink="@color/unpressedItem"
+                android:theme="@style/Box">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/firstAnswer"
+                    android:background="@drawable/box"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/Text"
+                    android:fontFamily="@font/poppins_medium"
+                    android:gravity="top"
+                    android:inputType="textMultiLine"
+                    android:lines="2"
+                    android:textSize="14sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/secondQuestion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins_medium"
+                android:paddingStart="10dp"
+                style="@style/Text"
+                android:text="@string/secondQuestion"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/firstAnswerContainer" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/secondAnswerContainer"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:textColorHighlight="@color/unpressedItem"
+                android:textColorLink="@color/unpressedItem"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/secondQuestion">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/secondAnswer"
+                    android:textSize="14sp"
+                    android:gravity="top"
+                    android:background="@drawable/box"
+                    android:fontFamily="@font/poppins_medium"
+                    style="@style/Text"
+                    android:inputType="textMultiLine"
+                    android:lines="2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/thirdQuestion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins_medium"
+                android:paddingStart="10dp"
+                style="@style/Text"
+                android:text="@string/thirdQuestion"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/secondAnswerContainer" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/thirdAnswerContainer"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:textColorHighlight="@color/unpressedItem"
+                android:textColorLink="@color/unpressedItem"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/thirdQuestion">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/thirdAnswer"
+                    android:textSize="14sp"
+                    android:gravity="top"
+                    android:background="@drawable/box"
+                    android:fontFamily="@font/poppins_medium"
+                    style="@style/Text"
+                    android:inputType="textMultiLine"
+                    android:lines="2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/submitButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/btn_submit"
+                android:fontFamily="@font/poppins_medium"
+                android:paddingStart="30dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="30dp"
+                android:paddingBottom="10dp"
+                android:text="@string/feedButton"
+                android:textColor="@color/backgroundLight"
+                android:textSize="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/thirdAnswerContainer" />
+        </LinearLayout>
+    </ScrollView>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

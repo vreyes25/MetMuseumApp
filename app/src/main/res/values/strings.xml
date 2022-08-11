@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Met Museum</string>
+    <string name="btnStart">Get Started</string>
+    <string name="txtSubtitle">MAKING HISTORY</string>
+
+    <!-- Menu -->
+    <string name="home">Home</string>
+    <string name="feedback">Feedback</string>
+    <string name="settings">Settings</string>
+
+    <!-- Home Text-->
+    <string name="homeTile">The Metropolitan Museum Of Art</string>
+    <string name="homeSubtitle">Meet all our art departments</string>
+    <string name="homeSecondTitle">Enjoy our gallery</string>
+    <string name="homeText">Explore all the image galleries and learn about the history of art through each of these wonderful and beautiful works.</string>
+
+    <!-- Feedback Text-->
+    <string name="firstQuestion">What was the art department that you liked the most?</string>
+    <string name="secondQuestion">Do you think it is important to spread art through museums?</string>
+    <string name="thirdQuestion">What do you think about our app?</string>
+    <string name="feedButton">Submit</string>
+
+    <!-- Settings Text-->
+    <string name="themeButton">Dark Mode Off</string>
+    <string name="settingsTitle">Change Theme</string>
+
+    <!-- Gallery Text-->
+    <string name="galleryTitle">Gallery</string>
+</resources>
