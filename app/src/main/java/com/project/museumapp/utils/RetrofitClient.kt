@@ -1,9 +1,8 @@
 package com.project.museumapp.utils
 
-import com.project.museumapp.model.DepartmentData
+import com.project.museumapp.service.MuseumService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.GET
 
 class RetrofitClient {
     val BASE_URL = "https://collectionapi.metmuseum.org/public/collection/v1/"
@@ -11,11 +10,6 @@ class RetrofitClient {
         Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
-            .build().create(RetrofitService::class.java)
+            .build().create(MuseumService::class.java)
     }
-}
-
-interface RetrofitService{
-    @GET("departments")
-    suspend fun getDepartmentsData(): DepartmentData
 }
