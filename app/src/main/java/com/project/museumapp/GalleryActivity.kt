@@ -51,7 +51,7 @@ class GalleryActivity : AppCompatActivity() {
                     findViewById<TextView>(R.id.txtTitle).text = response.body()?.title
                     findViewById<TextView>(R.id.txtCountry).text = response.body()?.country
                     if (response.body()?.primaryImage == "") {
-                        Glide.with(this@GalleryActivity).load("https://t3.ftcdn.net/jpg/04/34/72/82/360_F_434728286_OWQQvAFoXZLdGHlObozsolNeuSxhpr84.jpg").into(findViewById(R.id.artImage))
+                        Glide.with(this@GalleryActivity).load("https://t3.ftcdn.net/jpg/04/34/72/82/360_F_434728286_OWQQvAFoXZLdGHlObozsolNeuSxhpr84.jpg").centerCrop().into(findViewById(R.id.artImage))
                     } else {
                         Glide.with(this@GalleryActivity).load(response.body()?.primaryImage).into(findViewById(R.id.artImage))
                     }
