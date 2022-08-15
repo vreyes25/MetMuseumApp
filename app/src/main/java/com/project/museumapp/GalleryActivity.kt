@@ -3,8 +3,10 @@ package com.project.museumapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.util.Log.i
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.project.museumapp.model.DepartmentIDs
 import com.project.museumapp.model.MuseumArts
@@ -43,25 +45,31 @@ class GalleryActivity : AppCompatActivity() {
     }
 
     private fun getMyData() {
-        val call2: Call<MuseumArts> = retrofitService().getData(id[counter])
+        if (id.isNotEmpty()) {
+            val call2: Call<MuseumArts> = retrofitService().getData(id[counter])
 
-        call2.enqueue(object : Callback<MuseumArts> {
-            override fun onResponse(call: Call<MuseumArts>, response: Response<MuseumArts>) {
-                if (response.isSuccessful) {
-                    findViewById<TextView>(R.id.txtTitle).text = response.body()?.title
-                    findViewById<TextView>(R.id.txtCountry).text = response.body()?.country
-                    if (response.body()?.primaryImage == "") {
-                        Glide.with(this@GalleryActivity).load("https://t3.ftcdn.net/jpg/04/34/72/82/360_F_434728286_OWQQvAFoXZLdGHlObozsolNeuSxhpr84.jpg").centerCrop().into(findViewById(R.id.artImage))
-                    } else {
-                        Glide.with(this@GalleryActivity).load(response.body()?.primaryImage).into(findViewById(R.id.artImage))
+            call2.enqueue(object : Callback<MuseumArts> {
+                override fun onResponse(call: Call<MuseumArts>, response: Response<MuseumArts>) {
+                    if (response.isSuccessful) {
+                        findViewById<TextView>(R.id.txtTitle).text = response.body()?.title
+                        findViewById<TextView>(R.id.txtCountry).text = response.body()?.country
+                        if (response.body()?.primaryImage == "") {
+                            Glide.with(this@GalleryActivity).load("https://t3.ftcdn.net/jpg/04/34/72/82/360_F_434728286_OWQQvAFoXZLdGHlObozsolNeuSxhpr84.jpg").centerCrop().into(findViewById(R.id.artImage))
+                        } else {
+                            Glide.with(this@GalleryActivity).load(response.body()?.primaryImage).into(findViewById(R.id.artImage))
+                        }
                     }
                 }
-            }
 
-            override fun onFailure(call: Call<MuseumArts>, t: Throwable) {
-                Log.d("Error", "Error ${t.message}")
-            }
-        })
+                override fun onFailure(call: Call<MuseumArts>, t: Throwable) {
+                    Log.d("Error", "Error ${t.message}")
+                }
+            })
+        } else {
+            findViewById<TextView>(R.id.txtTitle).text = "No data available"
+            findViewById<TextView>(R.id.txtCountry).text = ""
+            Glide.with(this@GalleryActivity).load("https://www.itinerantnotes.com/blog-theme/images/empty.gif").centerCrop().into(findViewById(R.id.artImage))
+        }
     }
 
     private fun getObjectIDs(departmentId: Int) {
@@ -74,12 +82,15 @@ class GalleryActivity : AppCompatActivity() {
             ) {
                 if (response.isSuccessful) {
                     val responseBody = response.body()!!
-                    id = responseBody.objectIDs
-                    Log.i("ObjectID's", id.toString())
-                    getMyData()
+                    if (responseBody.objectIDs != null) {
+                        id = responseBody.objectIDs
+                        getMyData()
+                    } else {
+                        id = emptyList()
+                        getMyData()
+                    }
                 }
             }
-
             override fun onFailure(call: Call<DepartmentIDs?>, t: Throwable) {
                 Log.d("Error", "ID's can't be reached ${t.message}")
             }

@@ -47,7 +47,7 @@
         android:paddingStart="10dp"
         android:thumb="@drawable/thumb"
         android:track="@drawable/track"
-        android:text="@string/themeButton"
+        android:text="@string/themeButtonOff"
         android:textColor="@color/textLight"
         android:textColorHighlight="@color/pressedItem"
         android:textColorLink="@color/pressedItem"

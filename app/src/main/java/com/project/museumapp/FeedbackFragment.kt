@@ -1,59 +1,99 @@
 package com.project.museumapp
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
+import android.os.Build
 import android.os.Bundle
+import android.text.Editable
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import android.widget.Toast
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
+import com.google.android.material.textfield.TextInputEditText
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [FeedbackFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class FeedbackFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var firstAnswer : TextInputEditText
+    private lateinit var secondAnswer : TextInputEditText
+    private lateinit var thirdAnswer : TextInputEditText
+    private lateinit var btnSubmit : TextView
+
+    private val channelID = "channelID"
+    private val channelName = "channelName"
+    private val notificationID = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_feedback, container, false)
+    ): View {
+        val view : View = inflater.inflate(R.layout.fragment_feedback, container, false)
+
+        createNotificationChannel()
+
+        val notification = context?.let { it ->
+            NotificationCompat.Builder(it, channelID).also {
+                it.setContentTitle("¡Gracias por tus comentarios!")
+                it.setContentText("Tu opinión es muy valiosa para nosotros")
+                it.setSmallIcon(R.drawable.logo_red)
+                it.priority = NotificationCompat.PRIORITY_HIGH
+            }.build()
+        }
+
+        val notificationManager = context?.let { NotificationManagerCompat.from(it) }
+
+        firstAnswer = view.findViewById(R.id.firstAnswer)
+        secondAnswer = view.findViewById(R.id.secondAnswer)
+        thirdAnswer = view.findViewById(R.id.thirdAnswer)
+        btnSubmit = view.findViewById(R.id.submitButton)
+
+        val db = Firebase.firestore
+
+        btnSubmit.setOnClickListener {
+            val favoriteDepartment = firstAnswer.text.toString()
+            val museumComment = secondAnswer.text.toString()
+            val appComment = thirdAnswer.text.toString()
+
+            val comment = hashMapOf(
+                "Departamento de arte favorito" to favoriteDepartment,
+                "¿Son importantes los museos?" to museumComment,
+                "Opinión sobre la aplicación" to appComment
+            )
+
+            db.collection("Comentarios")
+                .add(comment)
+                .addOnSuccessListener {
+                    notificationManager?.notify(notificationID, notification!!)
+                    firstAnswer.text = Editable.Factory.getInstance().newEditable("")
+                    secondAnswer.text = Editable.Factory.getInstance().newEditable("")
+                    thirdAnswer.text = Editable.Factory.getInstance().newEditable("")
+                }
+                .addOnFailureListener { e ->
+                    Toast.makeText(context, "No se pudieron enviar tus comentarios", Toast.LENGTH_SHORT).show()
+                    Log.w("Failure", "Error adding document", e)
+                }
+        }
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment FeedbackFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            FeedbackFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    private fun createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val importance = NotificationManager.IMPORTANCE_HIGH
+            val channel = NotificationChannel(channelID, channelName, importance).apply {
+                lightColor = R.color.splash
+                enableLights(true)
             }
+
+            val manager = requireActivity().getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            manager.createNotificationChannel(channel)
+        }
     }
+
 }

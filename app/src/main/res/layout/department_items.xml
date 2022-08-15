@@ -5,8 +5,7 @@
     android:layout_height="290dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="20dp"
-    android:layout_margin="5dp"
-    android:background="@drawable/department_background">
+    android:layout_margin="5dp">
 
     <TextView
         android:id="@+id/departmentTitle"

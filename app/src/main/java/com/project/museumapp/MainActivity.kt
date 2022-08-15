@@ -7,7 +7,7 @@ import android.view.View
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        Thread.sleep(3000)
+        Thread.sleep(2000)
         setTheme(R.style.Theme_MuseumApp)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

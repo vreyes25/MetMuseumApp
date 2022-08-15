@@ -35,11 +35,11 @@
                 android:id="@+id/txtDepartment"
                 android:layout_width="290dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
                 android:fontFamily="@font/poppins_extrabold"
                 android:textColor="#D9D9D9"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:translationZ="1dp"
                 tools:text="American Decorative Arts" />
 
@@ -69,7 +69,7 @@
         android:fontFamily="@font/poppins_extrabold"
         android:text="@string/galleryTitle"
         style="@style/Title"
-        android:textSize="22sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toTopOf="@id/imageContainer"
@@ -90,7 +90,8 @@
             android:id="@+id/backImage"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/ic_baseline_arrow_back_ios_new_24"
+            android:src="@drawable/ic_baseline_arrow_forward_ios_24"
+            android:rotation="180"
             android:onClick="backImage"/>
 
         <com.google.android.material.card.MaterialCardView

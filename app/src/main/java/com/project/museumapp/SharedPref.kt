@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 
 class SharedPref(context: Context) {
-    internal lateinit var mySharedPref: SharedPreferences
+    private var mySharedPref: SharedPreferences
     init {
         mySharedPref = context.getSharedPreferences("filename", Context.MODE_PRIVATE)
     }

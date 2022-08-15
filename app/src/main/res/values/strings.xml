@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">Met Museum</string>
     <string name="btnStart">Get Started</string>
-    <string name="txtSubtitle">MAKING HISTORY</string>
 
     <!-- Menu -->
     <string name="home">Home</string>
@@ -21,7 +20,8 @@
     <string name="feedButton">Submit</string>
 
     <!-- Settings Text-->
-    <string name="themeButton">Dark Mode Off</string>
+    <string name="themeButtonOff">Dark Mode Off</string>
+    <string name="themeButtonOn">Dark Mode On</string>
     <string name="settingsTitle">Change Theme</string>
 
     <!-- Gallery Text-->

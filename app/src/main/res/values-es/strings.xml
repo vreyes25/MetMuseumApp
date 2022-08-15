@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Met Museum</string>
+    <string name="btnStart">Comenzar</string>
+
+    <!-- Menu -->
+    <string name="home">Inicio</string>
+    <string name="feedback">Opiniones</string>
+    <string name="settings">Ajustes</string>
+
+    <!-- Home Text-->
+    <string name="homeTile">Museo de Arte Metropolitano</string>
+    <string name="homeSubtitle">Explora los departamentos de arte</string>
+    <string name="homeSecondTitle">¡Disfruta nuestra galeria!</string>
+    <string name="homeText">Haz un recorrido por todas las galerías de imágenes y aprende sobre la historia del arte a través de cada una de estas maravillosas y hermosas obras.</string>
+
+    <!-- Feedback Text-->
+    <string name="firstQuestion">¿Cuál fue el departamento de arte que más te gustó?</string>
+    <string name="secondQuestion">¿Crees que es importante difundir el arte a través de los museos?</string>
+    <string name="thirdQuestion">¿Qué opinas sobre nuestra aplicación?</string>
+    <string name="feedButton">Enviar</string>
+
+    <!-- Settings Text-->
+    <string name="themeButtonOff">Modo Oscuro Desactivado</string>
+    <string name="themeButtonOn">Modo Oscuro Activado</string>
+    <string name="settingsTitle">Cambiar Tema</string>
+
+    <!-- Gallery Text-->
+    <string name="galleryTitle">Galeria</string>
+</resources>
