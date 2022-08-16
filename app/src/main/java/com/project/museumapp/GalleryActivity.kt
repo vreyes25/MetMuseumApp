@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import com.bumptech.glide.Glide
@@ -21,11 +22,20 @@ class GalleryActivity : AppCompatActivity() {
     private var counter = 0
     private lateinit var id : List<Int>
     private var totalArts = 0
+    private lateinit var title: TextView
+    private lateinit var country: TextView
+    private lateinit var total: TextView
+    private lateinit var primaryImage: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_gallery)
+        title = findViewById(R.id.txtTitle)
+        country = findViewById(R.id.txtCountry)
+        primaryImage = findViewById(R.id.artImage)
+        total = findViewById(R.id.totalArts)
 
+        Glide.with(this@GalleryActivity).load("https://reservarcannabis.com/static/media/loading.49db5812.gif").centerCrop().into(primaryImage)
         val departmentId = intent.getStringExtra("departmentId")
         val departmentName = intent.getStringExtra("departmentName")
 
@@ -51,12 +61,12 @@ class GalleryActivity : AppCompatActivity() {
             call2.enqueue(object : Callback<MuseumArts> {
                 override fun onResponse(call: Call<MuseumArts>, response: Response<MuseumArts>) {
                     if (response.isSuccessful) {
-                        findViewById<TextView>(R.id.txtTitle).text = response.body()?.title
-                        findViewById<TextView>(R.id.txtCountry).text = response.body()?.country
+                        title.text = response.body()?.title
+                        country.text = response.body()?.country
                         if (response.body()?.primaryImage == "") {
-                            Glide.with(this@GalleryActivity).load("https://t3.ftcdn.net/jpg/04/34/72/82/360_F_434728286_OWQQvAFoXZLdGHlObozsolNeuSxhpr84.jpg").centerCrop().into(findViewById(R.id.artImage))
+                            Glide.with(this@GalleryActivity).load("https://mountainholic.com/data/file/gallery/1794564802_GrmVxJz4_4f69963f2aec263bf84140cbb0de9d5dd61fc60a.png").centerCrop().into(primaryImage)
                         } else {
-                            Glide.with(this@GalleryActivity).load(response.body()?.primaryImage).into(findViewById(R.id.artImage))
+                            Glide.with(this@GalleryActivity).load(response.body()?.primaryImage).into(primaryImage)
                         }
                     }
                 }
@@ -104,7 +114,7 @@ class GalleryActivity : AppCompatActivity() {
         if (counter != 0) {
             counter--
             getMyData()
-            findViewById<TextView>(R.id.totalArts).text = "${counter - 1} de $totalArts"
+            total.text = "${counter - 1} de $totalArts"
         } else {
             Toast.makeText(baseContext, "No se puede retroceder", Toast.LENGTH_SHORT).show()
         }
@@ -114,7 +124,7 @@ class GalleryActivity : AppCompatActivity() {
         if (counter < id.size - 1) {
             counter++
             getMyData()
-            findViewById<TextView>(R.id.totalArts).text = "${counter + 1} de $totalArts"
+            total.text = "${counter + 1} de $totalArts"
         } else {
             Toast.makeText(baseContext, "No hay más obras para mostrar", Toast.LENGTH_SHORT).show()
         }

@@ -63,7 +63,7 @@
         android:id="@+id/totalArts"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="130dp"
+        android:layout_marginBottom="5dp"
         android:layout_marginStart="30dp"
         android:fontFamily="@font/poppins_extrabold"
         android:textColor="#D9D9D9"
@@ -71,7 +71,7 @@
         android:textSize="14sp"
         android:translationZ="1dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/txtDepartment"/>
+        app:layout_constraintBottom_toBottomOf="@id/galleryHeader"/>
 
     <TextView
         android:id="@+id/galleryTitle"
@@ -129,8 +129,7 @@
                     android:layout_width="200dp"
                     android:layout_height="200dp"
                     android:scaleType="fitXY"
-                    android:layout_margin="5dp"
-                    android:src="@drawable/ic_baseline_image_24" />
+                    android:layout_margin="5dp" />
 
                 <LinearLayout
                     android:orientation="vertical"
