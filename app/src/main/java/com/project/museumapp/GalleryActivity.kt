@@ -22,6 +22,7 @@ class GalleryActivity : AppCompatActivity() {
     private var counter = 0
     private lateinit var id : List<Int>
     private var totalArts = 0
+    private var artNum = 1
     private lateinit var title: TextView
     private lateinit var country: TextView
     private lateinit var total: TextView
@@ -35,6 +36,7 @@ class GalleryActivity : AppCompatActivity() {
         primaryImage = findViewById(R.id.artImage)
         total = findViewById(R.id.totalArts)
 
+        total.text = "$artNum de $totalArts"
         Glide.with(this@GalleryActivity).load("https://reservarcannabis.com/static/media/loading.49db5812.gif").centerCrop().into(primaryImage)
         val departmentId = intent.getStringExtra("departmentId")
         val departmentName = intent.getStringExtra("departmentName")
@@ -93,7 +95,7 @@ class GalleryActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     val responseBody = response.body()!!
                     totalArts = responseBody.total
-                    findViewById<TextView>(R.id.totalArts).text = "${counter + 1} de $totalArts"
+                    total.text = "${counter + 1} de $totalArts"
                     if (responseBody.objectIDs != null) {
                         id = responseBody.objectIDs
                         getMyData()
@@ -113,8 +115,9 @@ class GalleryActivity : AppCompatActivity() {
     fun backImage(view: View) {
         if (counter != 0) {
             counter--
+            artNum--
             getMyData()
-            total.text = "${counter - 1} de $totalArts"
+            total.text = "$artNum de $totalArts"
         } else {
             Toast.makeText(baseContext, "No se puede retroceder", Toast.LENGTH_SHORT).show()
         }
@@ -123,8 +126,9 @@ class GalleryActivity : AppCompatActivity() {
     fun nextImage(view: View) {
         if (counter < id.size - 1) {
             counter++
+            artNum++
             getMyData()
-            total.text = "${counter + 1} de $totalArts"
+            total.text = "$artNum de $totalArts"
         } else {
             Toast.makeText(baseContext, "No hay más obras para mostrar", Toast.LENGTH_SHORT).show()
         }
