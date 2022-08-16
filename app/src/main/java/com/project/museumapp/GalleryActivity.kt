@@ -3,7 +3,6 @@ package com.project.museumapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.util.Log.i
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
@@ -21,6 +20,7 @@ class GalleryActivity : AppCompatActivity() {
 
     private var counter = 0
     private lateinit var id : List<Int>
+    private var totalArts = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -82,12 +82,15 @@ class GalleryActivity : AppCompatActivity() {
             ) {
                 if (response.isSuccessful) {
                     val responseBody = response.body()!!
+                    totalArts = responseBody.total
+                    findViewById<TextView>(R.id.totalArts).text = "${counter + 1} de $totalArts"
                     if (responseBody.objectIDs != null) {
                         id = responseBody.objectIDs
                         getMyData()
                     } else {
                         id = emptyList()
                         getMyData()
+                        findViewById<TextView>(R.id.totalArts).text = ""
                     }
                 }
             }
@@ -101,6 +104,9 @@ class GalleryActivity : AppCompatActivity() {
         if (counter != 0) {
             counter--
             getMyData()
+            findViewById<TextView>(R.id.totalArts).text = "${counter - 1} de $totalArts"
+        } else {
+            Toast.makeText(baseContext, "No se puede retroceder", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -108,6 +114,9 @@ class GalleryActivity : AppCompatActivity() {
         if (counter < id.size - 1) {
             counter++
             getMyData()
+            findViewById<TextView>(R.id.totalArts).text = "${counter + 1} de $totalArts"
+        } else {
+            Toast.makeText(baseContext, "No hay más obras para mostrar", Toast.LENGTH_SHORT).show()
         }
     }
 

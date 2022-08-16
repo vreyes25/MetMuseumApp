@@ -7,56 +7,71 @@
     tools:context=".GalleryActivity"
     style="@style/Background">
 
-    <ScrollView
-        android:id="@+id/scrollContainer"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+    <ImageView
+        android:id="@+id/galleryHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="210dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/gallery_header"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@drawable/gallery_header">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+    <ImageView
+        android:id="@+id/backButon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:onClick="returnHome"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/ic_baseline_arrow_back_24"
+        android:translationZ="1dp" />
 
-            <ImageView
-                android:id="@+id/backButon"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="15dp"
-                android:onClick="returnHome"
-                android:src="@drawable/ic_baseline_arrow_back_24"
-                android:translationZ="1dp" />
+    <TextView
+        android:id="@+id/txtDepartment"
+        android:layout_width="290dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/poppins_extrabold"
+        android:textColor="#D9D9D9"
+        android:textSize="18sp"
+        android:translationZ="1dp"
+        tools:text="American Decorative Arts"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
-            <TextView
-                android:id="@+id/txtDepartment"
-                android:layout_width="290dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/poppins_extrabold"
-                android:textColor="#D9D9D9"
-                android:textSize="18sp"
-                android:translationZ="1dp"
-                tools:text="American Decorative Arts" />
+    <TextView
+        android:id="@+id/txtDepartmentId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="22dp"
+        android:layout_marginTop="105dp"
+        android:fontFamily="@font/poppins_extrabold"
+        android:layout_gravity="center"
+        android:textColor="@color/textLight"
+        android:textSize="2sp"
+        tools:text="19"
+        android:translationZ="-2dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-            <TextView
-                android:id="@+id/txtDepartmentId"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="22dp"
-                android:layout_marginTop="105dp"
-                android:fontFamily="@font/poppins_extrabold"
-                android:layout_gravity="center"
-                android:textColor="@color/textLight"
-                android:textSize="2sp"
-                tools:text="19"
-                android:translationZ="-2dp"/>
-        </LinearLayout>
-    </ScrollView>
+    <TextView
+        android:id="@+id/totalArts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="130dp"
+        android:layout_marginStart="30dp"
+        android:fontFamily="@font/poppins_extrabold"
+        android:textColor="#D9D9D9"
+        tools:text="Total"
+        android:textSize="14sp"
+        android:translationZ="1dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/txtDepartment"/>
 
     <TextView
         android:id="@+id/galleryTitle"
@@ -73,7 +88,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toTopOf="@id/imageContainer"
-        app:layout_constraintTop_toBottomOf="@id/scrollContainer" />
+        app:layout_constraintTop_toBottomOf="@id/galleryHeader" />
 
     <LinearLayout
         android:id="@+id/imageContainer"

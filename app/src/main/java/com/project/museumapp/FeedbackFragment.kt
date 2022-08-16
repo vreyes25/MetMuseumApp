@@ -61,24 +61,36 @@ class FeedbackFragment : Fragment() {
             val museumComment = secondAnswer.text.toString()
             val appComment = thirdAnswer.text.toString()
 
-            val comment = hashMapOf(
-                "Departamento de arte favorito" to favoriteDepartment,
-                "¿Son importantes los museos?" to museumComment,
-                "Opinión sobre la aplicación" to appComment
-            )
+            if (favoriteDepartment.isEmpty() && museumComment.isEmpty() && appComment.isEmpty()) {
+                firstAnswer.error = "Requerido"
+                secondAnswer.error = "Requerido"
+                thirdAnswer.error = "Requerido"
+            } else if (favoriteDepartment.isEmpty()) {
+                firstAnswer.error = "Requerido"
+            } else if (museumComment.isEmpty()) {
+                secondAnswer.error = "Requerido"
+            } else if (appComment.isEmpty()) {
+                thirdAnswer.error = "Requerido"
+            } else {
+                val comment = hashMapOf(
+                    "Departamento de arte favorito" to favoriteDepartment,
+                    "¿Son importantes los museos?" to museumComment,
+                    "Opinión sobre la aplicación" to appComment
+                )
 
-            db.collection("Comentarios")
-                .add(comment)
-                .addOnSuccessListener {
-                    notificationManager?.notify(notificationID, notification!!)
-                    firstAnswer.text = Editable.Factory.getInstance().newEditable("")
-                    secondAnswer.text = Editable.Factory.getInstance().newEditable("")
-                    thirdAnswer.text = Editable.Factory.getInstance().newEditable("")
-                }
-                .addOnFailureListener { e ->
-                    Toast.makeText(context, "No se pudieron enviar tus comentarios", Toast.LENGTH_SHORT).show()
-                    Log.w("Failure", "Error adding document", e)
-                }
+                db.collection("Comentarios")
+                    .add(comment)
+                    .addOnSuccessListener {
+                        notificationManager?.notify(notificationID, notification!!)
+                        firstAnswer.text = Editable.Factory.getInstance().newEditable("")
+                        secondAnswer.text = Editable.Factory.getInstance().newEditable("")
+                        thirdAnswer.text = Editable.Factory.getInstance().newEditable("")
+                    }
+                    .addOnFailureListener { e ->
+                        Toast.makeText(context, "No se pudieron enviar tus comentarios", Toast.LENGTH_SHORT).show()
+                        Log.w("Failure", "Error adding document", e)
+                    }
+            }
         }
         return view
     }
@@ -95,5 +107,4 @@ class FeedbackFragment : Fragment() {
             manager.createNotificationChannel(channel)
         }
     }
-
 }
