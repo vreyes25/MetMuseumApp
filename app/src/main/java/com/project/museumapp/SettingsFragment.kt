@@ -22,10 +22,10 @@ class SettingsFragment : Fragment() {
         sp = SharedPref(view.context)
         if (sp.loadNightModeState() == true) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            switch.text = "Dark Mode On"
+            switch.text = getString(R.string.themeButtonOn)
         } else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-            switch.text = "Dark Mode Off"
+            switch.text = getString(R.string.themeButtonOff)
         }
 
         if (sp.loadNightModeState() == true) {
@@ -34,11 +34,11 @@ class SettingsFragment : Fragment() {
         switch.setOnCheckedChangeListener { _, isChecked ->
             if (switch.isChecked) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                switch.text = "Dark Mode On"
+                switch.text = getString(R.string.themeButtonOn)
                 sp.setNightModeState(true)
             } else {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                switch.text = "Dark Mode Off"
+                switch.text = getString(R.string.themeButtonOff)
                 sp.setNightModeState(false)
             }
         }

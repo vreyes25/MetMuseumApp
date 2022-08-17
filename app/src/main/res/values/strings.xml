@@ -9,21 +9,29 @@
 
     <!-- Home Text-->
     <string name="homeTile">The Metropolitan Museum Of Art</string>
-    <string name="homeSubtitle">Meet all our art departments</string>
-    <string name="homeSecondTitle">Enjoy our gallery</string>
-    <string name="homeText">Explore all the image galleries and learn about the history of art through each of these wonderful and beautiful works.</string>
+    <string name="homeSubtitle">Explore the art departments</string>
+    <string name="homeSecondTitle">¡Enjoy our gallery!</string>
+    <string name="homeText">Take a tour of all the image galleries and learn about the history of art through each of these wonderful and beautiful works.</string>
 
     <!-- Feedback Text-->
     <string name="firstQuestion">What was the art department that you liked the most?</string>
     <string name="secondQuestion">Do you think it is important to spread art through museums?</string>
     <string name="thirdQuestion">What do you think about our app?</string>
     <string name="feedButton">Submit</string>
+    <string name="notificationTitle">¡Thanks for your comments!</string>
+    <string name="notificationText">Your opinion is very valuable to us</string>
+    <string name="requiredField">Required</string>
+    <string name="failureMessage">Your comments could not be sent</string>
 
     <!-- Settings Text-->
-    <string name="themeButtonOff">Dark Mode Off</string>
-    <string name="themeButtonOn">Dark Mode On</string>
+    <string name="themeButtonOff">Light Mode</string>
+    <string name="themeButtonOn">Dark Mode</string>
     <string name="settingsTitle">Change Theme</string>
 
     <!-- Gallery Text-->
     <string name="galleryTitle">Gallery</string>
+    <string name="total">%d of %d</string>
+    <string name="back">Can\'t go back</string>
+    <string name="next">There are no more works to show</string>
+    <string name="noData">No data available</string>
 </resources>

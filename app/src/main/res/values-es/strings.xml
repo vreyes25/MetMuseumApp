@@ -19,12 +19,20 @@
     <string name="secondQuestion">¿Crees que es importante difundir el arte a través de los museos?</string>
     <string name="thirdQuestion">¿Qué opinas sobre nuestra aplicación?</string>
     <string name="feedButton">Enviar</string>
+    <string name="notificationTitle">¡Gracias por tus comentarios!</string>
+    <string name="notificationText">Tu opinión es muy valiosa para nosotros</string>
+    <string name="requiredField">Requerido</string>
+    <string name="failureMessage">No se pudieron enviar tus comentarios</string>
 
     <!-- Settings Text-->
-    <string name="themeButtonOff">Modo Oscuro Desactivado</string>
-    <string name="themeButtonOn">Modo Oscuro Activado</string>
+    <string name="themeButtonOff">Modo Claro</string>
+    <string name="themeButtonOn">Modo Oscuro</string>
     <string name="settingsTitle">Cambiar Tema</string>
 
     <!-- Gallery Text-->
     <string name="galleryTitle">Galeria</string>
+    <string name="total">%d de %d</string>
+    <string name="back">No se puede retroceder</string>
+    <string name="next">No hay más obras para mostrar</string>
+    <string name="noData">Sin datos</string>
 </resources>

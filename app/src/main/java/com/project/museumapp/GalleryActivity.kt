@@ -36,7 +36,7 @@ class GalleryActivity : AppCompatActivity() {
         primaryImage = findViewById(R.id.artImage)
         total = findViewById(R.id.totalArts)
 
-        total.text = "$artNum de $totalArts"
+        total.text = getString(R.string.total, artNum, totalArts)
         Glide.with(this@GalleryActivity).load("https://reservarcannabis.com/static/media/loading.49db5812.gif").centerCrop().into(primaryImage)
         val departmentId = intent.getStringExtra("departmentId")
         val departmentName = intent.getStringExtra("departmentName")
@@ -95,7 +95,7 @@ class GalleryActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     val responseBody = response.body()!!
                     totalArts = responseBody.total
-                    total.text = "${counter + 1} de $totalArts"
+                    total.text = getString(R.string.total, artNum, totalArts)
                     if (responseBody.objectIDs != null) {
                         id = responseBody.objectIDs
                         getMyData()
@@ -117,9 +117,9 @@ class GalleryActivity : AppCompatActivity() {
             counter--
             artNum--
             getMyData()
-            total.text = "$artNum de $totalArts"
+            total.text = getString(R.string.total, artNum, totalArts)
         } else {
-            Toast.makeText(baseContext, "No se puede retroceder", Toast.LENGTH_SHORT).show()
+            Toast.makeText(baseContext, getString(R.string.back), Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -128,9 +128,9 @@ class GalleryActivity : AppCompatActivity() {
             counter++
             artNum++
             getMyData()
-            total.text = "$artNum de $totalArts"
+            total.text = getString(R.string.total, artNum, totalArts)
         } else {
-            Toast.makeText(baseContext, "No hay más obras para mostrar", Toast.LENGTH_SHORT).show()
+            Toast.makeText(baseContext, getString(R.string.next), Toast.LENGTH_SHORT).show()
         }
     }
 

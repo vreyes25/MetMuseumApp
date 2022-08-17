@@ -40,8 +40,8 @@ class FeedbackFragment : Fragment() {
 
         val notification = context?.let { it ->
             NotificationCompat.Builder(it, channelID).also {
-                it.setContentTitle("¡Gracias por tus comentarios!")
-                it.setContentText("Tu opinión es muy valiosa para nosotros")
+                it.setContentTitle(getString(R.string.notificationTitle))
+                it.setContentText(getString(R.string.notificationText))
                 it.setSmallIcon(R.drawable.logo_red)
                 it.priority = NotificationCompat.PRIORITY_HIGH
             }.build()
@@ -62,15 +62,15 @@ class FeedbackFragment : Fragment() {
             val appComment = thirdAnswer.text.toString()
 
             if (favoriteDepartment.isEmpty() && museumComment.isEmpty() && appComment.isEmpty()) {
-                firstAnswer.error = "Requerido"
-                secondAnswer.error = "Requerido"
-                thirdAnswer.error = "Requerido"
+                firstAnswer.error = getString(R.string.requiredField)
+                secondAnswer.error = getString(R.string.requiredField)
+                thirdAnswer.error = getString(R.string.requiredField)
             } else if (favoriteDepartment.isEmpty()) {
-                firstAnswer.error = "Requerido"
+                firstAnswer.error = getString(R.string.requiredField)
             } else if (museumComment.isEmpty()) {
-                secondAnswer.error = "Requerido"
+                secondAnswer.error = getString(R.string.requiredField)
             } else if (appComment.isEmpty()) {
-                thirdAnswer.error = "Requerido"
+                thirdAnswer.error = getString(R.string.requiredField)
             } else {
                 val comment = hashMapOf(
                     "Departamento de arte favorito" to favoriteDepartment,
@@ -87,7 +87,7 @@ class FeedbackFragment : Fragment() {
                         thirdAnswer.text = Editable.Factory.getInstance().newEditable("")
                     }
                     .addOnFailureListener { e ->
-                        Toast.makeText(context, "No se pudieron enviar tus comentarios", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, getString(R.string.failureMessage), Toast.LENGTH_SHORT).show()
                         Log.w("Failure", "Error adding document", e)
                     }
             }
